@@ -11,11 +11,8 @@ RUN apt-get update && apt-get install -y \
 # Устанавливаем рабочую директорию внутри контейнера
 WORKDIR /app
 
-# Копируем файлы зависимостей для более эффективного кэширования слоёв
-COPY requirements.txt /app/
-
 # Устанавливаем Python-зависимости
-RUN pip install --upgrade pip && pip install -r requirements.txt
+RUN pip install --upgrade pip && pip install django
 
 # Копируем весь проект в контейнер
 COPY . /app/
